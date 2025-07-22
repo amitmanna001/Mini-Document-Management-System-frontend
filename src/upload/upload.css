@@ -1,0 +1,18 @@
+body, html {
+    height: 100%;
+  }
+  .center-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+  .card {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  .btn-sm {
+    width: 100%;
+  }

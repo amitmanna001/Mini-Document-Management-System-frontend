@@ -1,0 +1,11 @@
+<div class="center-container">
+    <div class="card" style="width: 23rem;">
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Upload your zip file</label>
+          <input class="form-control" type="file" accept=".zip" id="formFile" (change)="onFileSeleted($event)">
+        </div>
+        <button type="button" class="btn btn-primary btn-sm mt-2" (click)="onUpload()">Submit</button>
+      </div>
+    </div>
+  </div>
