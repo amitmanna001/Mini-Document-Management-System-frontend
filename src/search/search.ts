@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../Service/data-service';
+import { PdfService } from './pdf-service';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +11,7 @@ import { DataService } from '../Service/data-service';
 export class Search {
   items : any[]=[];
   pdfPath="/UPLOAD_FILES/";
-  constructor(private dataService: DataService){}
+  constructor(private dataService: DataService, private pdfService: PdfService){}
   ngOnInit() : void{
     this.dataService.getDocumentData()
     .subscribe((response)=>{
@@ -19,9 +20,15 @@ export class Search {
     })
   }
   viewPdf(filename : string): void {
-    const fullPath = this.pdfPath + filename;
-    this.openPdfInNewTab(fullPath);
-    console.log("Opening: " + fullPath);
+    this.pdfService.getPdf(filename).subscribe({
+      next: (blob) => {
+        const url = URL.createObjectURL(blob);       
+        window.open(url, '_blank');
+      },
+      error: (err) => {
+        console.error('Error loading PDF:', err);
+      },
+    });
   }
   openPdfInNewTab(pdfUrl: string): void {
     window.open(pdfUrl, '_blank');
