@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Upload } from '../upload/upload';
-import { Search } from '../search/search';
+import { Upload } from './components/upload/upload';
+import { Search } from './components/search/search';
+import { App } from './app';
 
 const routes: Routes = [
   {
